@@ -1,0 +1,9 @@
+Server: nginx
+Date: Mon, 07 Nov 2022 08:48:01 GMT
+Content-Type: text/html; charset=utf-8
+Sops_Api_Credits: 4000
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Content-Encoding: gzip

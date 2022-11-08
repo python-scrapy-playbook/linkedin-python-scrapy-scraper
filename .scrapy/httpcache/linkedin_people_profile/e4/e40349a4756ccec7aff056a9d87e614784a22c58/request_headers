@@ -1,0 +1,4 @@
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en
+User-Agent: Scrapy/2.7.1 (+https://scrapy.org)
+Accept-Encoding: gzip, deflate
