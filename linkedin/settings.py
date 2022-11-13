@@ -12,7 +12,7 @@ BOT_NAME = 'linkedin'
 SPIDER_MODULES = ['linkedin.spiders']
 NEWSPIDER_MODULE = 'linkedin.spiders'
 
-HTTPCACHE_ENABLED = True
+# HTTPCACHE_ENABLED = True
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
