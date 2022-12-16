@@ -2,7 +2,7 @@ import json
 import scrapy
 
 class LinkedCompanySpider(scrapy.Spider):
-    name = "linkedin_company"
+    name = "linkedin_company_profile"
     api_url = 'https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=python&location=United%2BStates&geoId=103644278&trk=public_jobs_jobs-search-bar_search-submit&start=' 
 
     #add your own list of company urls here

@@ -1,11 +1,12 @@
 # linkedin-python-scrapy-scraper
-Python Scrapy spiders that scrape people and company profiles from [LinkedIn.com](https://www.linkedin.com/). 
+Python Scrapy spiders that scrape job data & people and company profiles from [LinkedIn.com](https://www.linkedin.com/). 
 
-This Scrapy project contains 2 seperate spiders:
+This Scrapy project contains 3 seperate spiders:
 
 | Spider  |      Description      |
 |----------|-------------|
 | `linkedin_people_profile` |  Scrapes people data from LinkedIn people profile pages. | 
+| `linkedin_jobs` |  Scrapes job data from LinkedIn (https://www.linkedin.com/jobs/search) | 
 | `linkedin_company_profile` |  Scrapes company data from LinkedIn company profile pages. | 
 
 
