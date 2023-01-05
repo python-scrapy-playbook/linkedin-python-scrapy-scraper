@@ -13,6 +13,8 @@ This Scrapy project contains 3 seperate spiders:
 The following articles go through in detail how these LinkedIn spiders were developed, which you can use to understand the spiders and edit them for your own use case.
 
 - [Python Scrapy: Build A LinkedIn.com People Profile Scraper](https://scrapeops.io/python-scrapy-playbook/python-scrapy-linkedin-people-scraper/)
+- [Python Scrapy: Build A LinkedIn.com Jobs Scraper](https://scrapeops.io/python-scrapy-playbook/python-scrapy-linkedin-jobs-scraper/)
+- [Python Scrapy: Build A LinkedIn.com Company Profile Scraper](https://scrapeops.io/python-scrapy-playbook/python-scrapy-linkedin-company-scraper/)
 
 ## ScrapeOps Proxy
 This LinkedIn spider uses [ScrapeOps Proxy](https://scrapeops.io/proxy-aggregator/) as the proxy solution. ScrapeOps has a free plan that allows you to make up to 1,000 requests per month which makes it ideal for the development phase, but can be easily scaled up to millions of pages per month if needs be.
