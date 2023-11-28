@@ -1,4 +1,6 @@
-__all__ = ['configs','linkedin_jobs']
+__all__ = ['configs','jobinfos', 'iofunctions','pipelines']
 
 from .spiders import configs
-from .spiders import linkedin_jobs
+from .spiders import jobinfos
+from .spiders import iofunctions 
+from . import pipelines

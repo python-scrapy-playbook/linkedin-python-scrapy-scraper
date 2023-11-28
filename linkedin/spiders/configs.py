@@ -16,5 +16,7 @@ HEADERS = {
 
 JOB_URL_PREFIX = "https://www.linkedin.com/jobs/view/"
 PATH_JOBS_HTML_COLLECT = "/home/linkedin-python-scrapy-scraper/linkedin/tests/jobs_html_collected"
+PATH_JOBS_JSON_COLLECT = "/home/linkedin-python-scrapy-scraper/linkedin/tests/jobs_json_collected"
 PATH_JOBS_ID_LIST = "/home/linkedin-python-scrapy-scraper/linkedin/tests/jobs_id_list.txt"
 RE_CLASS_NAME = "show-more-less-html"
+LOG_FORMAT = "%(asctime)s:%(levelname)s:%(filename)s:%(message)s"

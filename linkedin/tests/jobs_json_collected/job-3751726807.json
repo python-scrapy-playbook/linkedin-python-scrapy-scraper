@@ -1,0 +1,13 @@
+{
+    "id": "3751726807",
+    "title": "Engenheiro(a) de Dados Sênior",
+    "company": "Tereos",
+    "locale": "São José do Rio Preto, SP",
+    "description": " \nQue desafio temos para você?\nEstamos em busca de um(a)\nEngenheiro(a) de Dados Sênior para atuar no nosso time de Business Intelligence da área Comercial. Nosso objetivo é suportar a tomada de decisões através do gerenciamento de produtos de dados (KPIs, pipelines, relatórios, análises) e da geração de insights.\nQuais as responsabilidades?\nGerir ferramentas de orquestração, integração e transformação de dados;\nSuportar e melhorar nosso Data Warehouse e outros produtos de dados;\nTrabalhar em estreita colaboração com os analistas de dados na criação de novos produtos;\nDefinir e seguir boas práticas em desenvolvimento de software, arquitetura de dados e documentação;\nRealizar projetos de integração de dados com times internos e consultorias externas;\nResolver incidentes e problemas técnicos;\nContribuir com a gestão da rotina e capacitação do time;\nFomentar uma cultura de dados dentro e fora da equipe.\nQuais os requisitos? \nEnsino superior completo;\nInglês avançado;\nConhecimento e experiência em:\nEngenharia de software, algoritmos e estruturas de dados;\nETL/ELT (preferencialmente com SQL e Python);\nModelagem de dados multidimensionais (ex: star schema);\nSoluções para armazenamento e gestão de dados analíticos (ex: Data Warehouse, Data Lake);\nFerramentas para orquestração de pipelines de dados (ex: Airflow, Dagster, Mage);\nFerramentas para integração de dados (ex: Talend, Airbyte, Apache NiFi);\nUtilização de APIs para integração e consumo de dados;\nServiços de armazenamento e computação em nuvem (ex: AWS S3, AWS EC2, AWS Redshift);\nVersionamento de código com Git;\nCI/CD;\nLinux;\nQual localidade?\nSão José do Rio Preto-SP ",
+    "criteria": {
+        "seniority_level": "Pleno-sênior",
+        "employment_type": "Tempo integral",
+        "job_function": "Administração, Tecnologia da informação e Analista",
+        "industries": "Fabricação de produtos alimentícios e bebidas"
+    }
+}

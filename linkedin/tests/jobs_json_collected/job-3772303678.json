@@ -1,0 +1,13 @@
+{
+    "id": "3772303678",
+    "title": "Engenheiro de Dados Jr",
+    "company": "Genial Investimentos",
+    "locale": "São Paulo, SP",
+    "description": " Buscamos profissionais que tenham vontade de crescer, colocar a mão na massa e fazer acontecer. Vivemos um momento único, recheado de desafios e oportunidades para agregar ainda mais valor aos nossos clientes. Se você tem esse perfil e essa ambição, inscreva-se nesta vaga e junte-se a nós para construir o futuro do mercado financeiro. #VemSerGenial\nResponsabilidades e atribuições\nResponsável por ajudar a construir e manter a infraestrutura que suporta armazenamento, processamento e recuperação de dados.\nTrabalhar com grandes conjuntos de dados desenvolvendo pipelines de dados que movem dados de sistemas de origem para data lakes e outros sistemas de armazenamento e processamento de dados.\nDesenvolvimento de pipelines de dados.\nDesenvolvimento do data quality para todas as fases dos pipelines de dados.\nMonitoramento e criação das regras de alerta de dados dos processos do data lake.\nCriação e implementação de arquiteturas de dados, escalveis e customizadas, visando o baixo custo de operação e uma alta rentabilidade na entrega dos produtos de dados. Implementação, automação e versionamento de modelos de ML;\nMonitoramento, performance e draft dos modelos de ML dentro do ambiente MLOPS\nConstrução de processos de ingestão, preparação, processamento, disponibilização de dados para as áreas de negócio.\nRequisitos e qualificações\nAzure Devops / Git Flow\nExperiência no Mercado Financeiro (desejável)\nPySpark, Python, SQL\nCloud Azure (desejável)\nInformações adicionais\nAssistência Médica\nAssistência Odontológica\nVale Refeição\nVale Alimentação\nSeguro de Vida\nTotal Pass\nGymPass\nPLR\nLocal e Modelo",
+    "criteria": {
+        "seniority_level": "Não aplicável",
+        "employment_type": "Tempo integral",
+        "job_function": "Tecnologia da informação",
+        "industries": "Bancos"
+    }
+}

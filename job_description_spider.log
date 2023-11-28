@@ -1,0 +1,78 @@
+2023-11-28 19:39:26,000:INFO:log.py:Scrapy 2.11.0 started (bot: linkedin)
+2023-11-28 19:39:26,008:INFO:log.py:Versions: lxml 4.9.3.0, libxml2 2.10.3, cssselect 1.2.0, parsel 1.8.1, w3lib 2.1.2, Twisted 22.10.0, Python 3.8.10 (default, May 26 2023, 14:05:08) - [GCC 9.4.0], pyOpenSSL 23.3.0 (OpenSSL 3.1.4 24 Oct 2023), cryptography 41.0.5, Platform Linux-5.4.72-microsoft-standard-WSL2-x86_64-with-glibc2.29
+2023-11-28 19:39:26,011:INFO:addons.py:Enabled addons:
+[]
+2023-11-28 19:39:26,012:WARNING:warnings.py:/home/linkedin-python-scrapy-scraper/venv/lib/python3.8/site-packages/scrapy/utils/request.py:254: ScrapyDeprecationWarning: '2.6' is a deprecated value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting.
+
+It is also the default value. In other words, it is normal to get this warning if you have not defined a value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting. This is so for backward compatibility reasons, but it will change in a future version of Scrapy.
+
+See the documentation of the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting for information on how to handle this deprecation.
+  return cls(crawler)
+
+2023-11-28 19:39:26,013:DEBUG:log.py:Using reactor: twisted.internet.epollreactor.EPollReactor
+2023-11-28 19:39:26,028:INFO:telnet.py:Telnet Password: f35c6910acb9376c
+2023-11-28 19:39:26,069:INFO:middleware.py:Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats']
+2023-11-28 19:39:26,070:INFO:crawler.py:Overridden settings:
+{'BOT_NAME': 'linkedin',
+ 'CONCURRENT_REQUESTS': 1,
+ 'NEWSPIDER_MODULE': 'linkedin.spiders',
+ 'SPIDER_MODULES': ['linkedin.spiders']}
+2023-11-28 19:39:26,147:INFO:middleware.py:Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2023-11-28 19:39:26,149:INFO:middleware.py:Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2023-11-28 19:39:26,150:INFO:middleware.py:Enabled item pipelines:
+['linkedin.pipelines.JobDescriptionSpiderPipeline']
+2023-11-28 19:39:26,150:INFO:engine.py:Spider opened
+2023-11-28 19:39:26,154:INFO:logstats.py:Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2023-11-28 19:39:26,155:INFO:telnet.py:Telnet console listening on 127.0.0.1:6023
+2023-11-28 19:39:26,157:INFO:job_description_spider.py:Start Requests.
+2023-11-28 19:39:26,159:WARNING:warnings.py:/home/linkedin-python-scrapy-scraper/venv/lib/python3.8/site-packages/scrapy/core/downloader/contextfactory.py:90: DeprecationWarning: Passing method to twisted.internet.ssl.CertificateOptions was deprecated in Twisted 17.1.0. Please use a combination of insecurelyLowerMinimumTo, raiseMinimumTo, and lowerMaximumSecurityTo instead, as Twisted will correctly configure the method.
+  return CertificateOptions(
+
+2023-11-28 19:39:27,253:DEBUG:engine.py:Crawled (200) <GET https://www.linkedin.com/jobs/view/3760881639/> (referer: None)
+2023-11-28 19:39:27,354:INFO:job_description_spider.py:Saving Response as HTML.
+2023-11-28 19:39:27,382:INFO:job_description_spider.py:Extracting the Job infos.
+2023-11-28 19:39:27,527:INFO:engine.py:Closing spider (finished)
+2023-11-28 19:39:27,528:INFO:statscollectors.py:Dumping Scrapy stats:
+{'downloader/request_bytes': 708,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 33259,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'elapsed_time_seconds': 1.373463,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2023, 11, 28, 22, 39, 27, 527887, tzinfo=datetime.timezone.utc),
+ 'httpcompression/response_bytes': 257754,
+ 'httpcompression/response_count': 1,
+ 'log_count/DEBUG': 2,
+ 'log_count/INFO': 13,
+ 'log_count/WARNING': 2,
+ 'memusage/max': 59842560,
+ 'memusage/startup': 59842560,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'start_time': datetime.datetime(2023, 11, 28, 22, 39, 26, 154424, tzinfo=datetime.timezone.utc)}
+2023-11-28 19:39:27,528:INFO:engine.py:Spider closed (finished)
