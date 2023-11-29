@@ -8,19 +8,19 @@ from scrapy.utils.project import get_project_settings
 
 class TestIntegration(unittest.TestCase):
     def setUp(self):
-        self.JOB_ID_LIST = iofunctions.read_id_file(configs.PATH_JOBS_ID_LIST)
-        self.output = ""
+        self.JOB_ID_LIST = iofunctions.read_file(configs.PATH_JOBS_ID_LIST)
+        self.outputs = []
 
     def output_callback(self, output_spider):
-        self.output = dict(output_spider)
+        self.outputs.append(dict(output_spider))
     
     def test_request_200(self):    
-        test = 6
+        test = 1
         for job_id in self.JOB_ID_LIST[test:test+1]:
             process = CrawlerProcess(get_project_settings())
             process.crawl(job_description_spider.JobDescriptionSpider, job_id, output_callback=self.output_callback)
             process.start() 
-            self.assertEqual(self.output.get("collectedStatus"), 200)
+            self.assertEqual(self.outputs[0].get("collectedStatus"), 200)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,34 @@
+ 
+Job Description
+Se você gosta de possibilidades de desenvolvimento pessoal e profissional, além de simplificar e impulsionar negócios através de oportunidades na empresa líder de segmento de pagamentos eletrônicos na América Latina, seu lugar é junto ao #TimeCielo!
+Infinitas possibilidades
+Aqui na Cielo acreditamos que nenhum negócio nasceu para ficar parado e, entendemos que a nossa vocação é despertar essa mesa inquietude em cada um dos nossos clientes. Ao todo, somos mais 4 mil pessoas colaboradoras que simplificam e impulsionam negócios para todos, afinal, não é à toa que somos uma empresa de tecnologia e serviço para o varejo, líder no segmento de pagamentos eletrônicos na América Latina.
+Oferecemos um portfólio de soluções para atender às necessidades de mais de 1,2 milhão de clientes, desde os pequenos lojistas até os grandes varejistas espalhados por todo o país.
+Qual será o seu desafio dentro da Cielo?
+Buscamos pessoas que gostem de trabalhar com MUITA autonomia e colaboração. Afinal, é apenas juntos que conseguiremos entender ao máximo a necessidade do cliente e entregar os melhores resultados sempre!
+Trabalhando na área de performance do E-commerce, você terá a oportunidade de atuar em um time de muita colaboração e engajada na entrega de resultados. Realizando a análise, a ingestão de dados e gerando insights do negócio.
+Vamos juntos fazer acontecer? Vem para o #TimeCielo
+Responsibilities and assignments
+O Dia a Dia Será Fazendo o Seguinte
+Desenvolver modelos matemáticos e estatísticos, podendo aplicar técnicas de Machine Learning, para otimizar a utilização dos dados de performance do E-commerce, com foco na melhoria da aprovação transacional;
+Criar e automatizar ciclos analíticos "end-to-end": obtenção e tratamento/limpeza dos dados; análise exploratória de dados; criação e validação do modelo;
+Disponibilizar dados para consumo;
+Interagir com usuários de negócio na identificação e mapeamento de oportunidades de melhoria a serem resolvidas via construção de modelos analíticos.
+Requirements And Qualifications
+Para se inscrever a essa vaga, você precisa:
+Superior Completo (Ciência da Computação, Análise de Sistema, Engenharia, Administração, Estatística, Matemática);
+Conhecimento técnico em programação (SQL e Python obrigatórios e, preferencialmente, R);
+Experiência em analytics e/ou data science, incluindo construção de modelos;
+Experiência de trabalho com alta carga analítica;
+Conhecimento de métodos ágeis;
+Experiência com as ferramentas da AWS.
+Additional information
+Falando De Benefícios, Você Vai Poder Contar Com Assistência Médica e Odontológica Remuneração Variável Anual (PPR) Auxílio Refeição e Alimentação Auxílio Transporte, Fretado ou Estacionamento Home-office (modelo híbrido) Auxílio Trabalho Remoto Seguro de Vida Previdência Privada Canal de apoio à especialistas (nutrição, psicologia, ginecologia etc) Campanha de Vacinação Edupass (Plataforma de estudo e desconto em instituições parceiras) Gympass (Auxílio Academia e Bem-estar) Programa de Gestação Saudável Licença Maternidade e Paternidade estendida Auxílio Creche Dress Code Flexível Horário Flexível Sexta-curta Almoço estendido (1h30)
+Vem pro #TimeCIelo, onde seu sonho de transformação encontra infinitas possibilidades de se tornar realidade!
+Somos mais que uma máquina, somos pessoas que sonham , transformam e criam infinitas possibilidades juntas.
+Aqui a gente é movido por sonhos e, mais importante, por transformação! Por isso, nos empenhamos todos os dias para cumprir a nosso propósito de simplificar e impulsionar negócios para todas as pessoas , oferecendo soluções financeiras inteligentes e acessíveis que estão no dia a dia de quem movimenta o Brasil.
+Para isso, Investimos fortemente em tecnologia, criamos um ambiente propenso ao desenvolvimento e fomentamos a inovação para aumentar cada vez mais a nossa capacidade de criar novos caminhos possíveis e gerar impacto positivo no mundo.
+Trabalhar na Cielo é aprender na prática e construir uma carreira diariamente.
+No nosso dia a dia, a gente trabalha com autonomia para escrever nossa própria jornada, liberdade para ser quem a gente é e a oportunidade de fazer acontecer.
+Nós sonhamos no plural, acolhendo e ajudando a realizar os sonhos das mais de 5.000 pessoas que fazem parte do #TimeCielo. E, para torná-los realidade, a gente oferece uma experiência completa e inesquecível para o nosso time, focando no bem-estar físico e mental não apenas dos nossos colaboradores e colaboradoras, mas também de suas famílias.
+Além disso, a gente acredita que a resposta para conseguir vislumbrar novos futuros está na inclusão e acolhimento de todas as pessoas, com suas singularidades e diversidade de vivências. Por isso, não importa qual seja o seu sonho – pra sua vida, sua carreira, pra deixar sua marca no mundo –, tem lugar pra ele aqui, junto com os nossos. Vem pra Cima, vem pra Cielo!

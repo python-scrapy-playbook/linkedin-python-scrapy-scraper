@@ -1,7 +1,6 @@
 import re
 from bs4 import BeautifulSoup
 from spiders import configs
-from spiders import iofunctions
 
 def remove_tags(div_tag):
     tag_to_remove = ["p","u", "em", "strong", "ul", "li", "br"]
@@ -85,7 +84,3 @@ def get_job_id(response):
     job_url_splited = response.text.split(configs.JOB_URL_PREFIX)
     job_id = job_url_splited[1][0:10]
     return job_id
-
-def save_job_infos(response, id):
-    jobs_infos = get_all_infos(response, id)
-    iofunctions.save_json(jobs_infos)

@@ -1,9 +1,11 @@
+import json
 import os 
 import pdb
 import sys
 import unittest
 from spiders import configs
 from spiders import jobinfos
+from spiders import iofunctions
 from scrapy.http import HtmlResponse
 sys.dont_write_bytecode = True
 
@@ -23,66 +25,64 @@ class TestUnit(unittest.TestCase):
     def get_html_files_test(self, index_initial=0, index_final=1):
         files = self.get_job_files()
         for file in files[index_initial:index_final]:
-            print(file)
             response = self.read_file(file)
         return response
     
-    #@unittest.skip("")
     def test_parser_description(self):
-        response = self.get_html_files_test()
-        text_job_description_result = jobinfos.get_text_job_description(response)
-        pdb.set_trace()
+        text_job_description_file = iofunctions.read_file('/home/linkedin-python-scrapy-scraper/linkedin/tests/expect_files/parser_description_expected.txt')
+        text_job_description_expected = ''.join(text_job_description_file)
 
-    @unittest.skip("")
-    def test_parser_job_title(self):
         response = self.get_html_files_test()
-        tag_class_find = self.find_class(response, "top-card-layout__title")
-        job_title_text = tag_class_find.text
-        #pdb.set_trace()
-    
-    @unittest.skip("")
-    def test_parser_job_company(self):
-        response = self.get_html_files_test()
-        re_class_find = "topcard__org-name-link"
-        tag_class_find = self.find_class(response, "topcard__org-name-link")
-        job_company = tag_class_find.text
-        pdb.set_trace()
-    
-    @unittest.skip("")
-    def test_parser_job_locale(self):
-        response = self.get_html_files_test()
-        re_class_find = "topcard__flavor topcard__flavor--bullet"
-        tag_class_find = self.find_class(response, re_class_find)
-        job_locale = tag_class_find.text
-        pdb.set_trace()
-    
-    @unittest.skip("")
-    def test_parser_job_criteria_list(self):
-        response = self.get_html_files_test()
-        job_criteria_infos = self.get_job_criteria_infos(response)
-        pdb.set_trace()
-    
-    @unittest.skip("")
-    def test_read_list_jobs(self):
-        job_list_read = None
-        with open(configs.PATH_JOBS_ID_LIST,"r") as job_list:
-            job_list_read = job_list.readlines()
-        print(job_list_read)
-    
-    @unittest.skip("")
-    def test_split_url(self):
-        url = 'https://www.linkedin.com/jobs/view/3762626775/?refId=7584f83d-05b7-416f-aaa9-f6b1aca96944&trackingId=MwJx8N6oTOS7ly4glqWqIQ%3D%3D&trk=flagship3_job_home_savedjobs'
-        id_job = url.split("https://www.linkedin.com/jobs/view/")
-        print("\n")
-        print(id_job[1][0:10])
-    
-    @unittest.skip("")
-    def test_list_dir(self):
-        full_path = "/home/linkedin-python-scrapy-scraper/linkedin/test/curls/html_results"
-        job_files = os.listdir("/home/linkedin-python-scrapy-scraper/linkedin/test/curls/html_results")
+        soup_response = jobinfos.create_soup(response)
+        text_job_description_result = jobinfos.get_text_job_description(soup_response)
 
-        for job in job_files:
-            print(f"{full_path}{job}")
+        self.assertEqual(text_job_description_result, text_job_description_expected)
+    
+    def test_get_job_criteria_infos(self):
+        response = self.get_html_files_test()
+        soup_response = jobinfos.create_soup(response)
+        job_criteria_infos_result = jobinfos.get_job_criteria_infos(soup_response)
+        job_criteria_infos_expected = {
+            'seniority_level': 'Entry level', 
+            'employment_type': 'Full-time', 
+            'job_function': 'Information Technology', 
+            'industries': 'Financial Services'
+        }
+        self.assertEqual(job_criteria_infos_result, job_criteria_infos_expected)
+    
+    def test_job_title(self):
+        response = self.get_html_files_test()
+        soup_response = jobinfos.create_soup(response)
+        job_title_result = jobinfos.get_job_title(soup_response)
+        job_title_expected = 'Engenheiro de Dados'
+        self.assertEqual(job_title_result, job_title_expected)
+    
+    def test_get_job_company(self):
+        response = self.get_html_files_test()
+        soup_response = jobinfos.create_soup(response)
+        job_company_result = jobinfos.get_job_company(soup_response)
+        job_company_expected = 'Cielo'
+        self.assertEqual(job_company_result, job_company_expected)
+    
+    def test_get_job_locale(self):
+        response = self.get_html_files_test()
+        soup_response = jobinfos.create_soup(response)
+        job_locale_atual = jobinfos.get_job_locale(soup_response)
+        job_locale_expected = 'Barueri, São Paulo, Brazil'
+        self.assertEqual(job_locale_atual, job_locale_expected)
+    
+    def test_get_all_infos(self):
+        response = self.get_html_files_test()
+        job_all_infos_atual = jobinfos.get_all_infos(response,'3761065603')
+        json_expected_expected = iofunctions.read_json('/home/linkedin-python-scrapy-scraper/linkedin/tests/expect_files/all_infos_expected.json')
+        self.assertEqual(job_all_infos_atual, json_expected_expected)
+    
+    def test_job_id(self):
+        response = self.get_html_files_test()
+        job_id_atual = jobinfos.get_job_id(response)
+        job_id_expected = "3755870000"
+        self.assertEqual(job_id_atual, job_id_expected)
 
+        
 if __name__ == '__main__':
     unittest.main(argv=[''], exit=False)

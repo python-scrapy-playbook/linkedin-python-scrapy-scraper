@@ -31,3 +31,5 @@ venv/
 
 ## Custom
 data/
+htmlcov/
+.coverage

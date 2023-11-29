@@ -1,6 +1,5 @@
 import logging
 import scrapy
-from scrapy import signals
 from spiders import configs
 from spiders import iofunctions
 from spiders import jobinfos
