@@ -8,9 +8,9 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
         }
 
     def start_requests(self):
-        profile_list = ['reidhoffman']
+        profile_list = ['niknmirosh']
         for profile in profile_list:
-            linkedin_people_url = f'https://www.linkedin.com/in/{profile}/' 
+            linkedin_people_url = f'https://www.linkedin.com/in/{profile}/'
             yield scrapy.Request(url=linkedin_people_url, callback=self.parse_profile, meta={'profile': profile, 'linkedin_url': linkedin_people_url})
 
     def parse_profile(self, response):
@@ -62,16 +62,16 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
             except Exception as e:
                 print('experience --> organisation_profile', e)
                 experience['organisation_profile'] = ''
-                
-                
+
+
             ## location
             try:
                 experience['location'] = block.css('p.experience-item__location::text').get().strip()
             except Exception as e:
                 print('experience --> location', e)
                 experience['location'] = ''
-                
-                
+
+
             ## description
             try:
                 experience['description'] = block.css('p.show-more-less-text__text--more::text').get().strip()
@@ -82,7 +82,7 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
                 except Exception as e:
                     print('experience --> description', e)
                     experience['description'] = ''
-                    
+
             ## time range
             try:
                 date_ranges = block.css('span.date-range time::text').getall()
@@ -99,10 +99,10 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
                 experience['start_time'] = ''
                 experience['end_time'] = ''
                 experience['duration'] = ''
-            
+
             item['experience'].append(experience)
 
-        
+
         """
             EDUCATION SECTION
         """
@@ -143,7 +143,7 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
                 print("education --> description", e)
                 education['description'] = ''
 
-         
+
             ## time range
             try:
                 date_ranges = block.css('span.date-range time::text').getall()
@@ -161,6 +161,3 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
             item['education'].append(education)
 
         yield item
-        
-    
-
