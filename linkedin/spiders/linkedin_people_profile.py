@@ -1,4 +1,5 @@
 import scrapy
+from openai import OpenAI
 
 class LinkedInPeopleProfileSpider(scrapy.Spider):
     name = "linkedin_people_profile"
@@ -8,9 +9,9 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
         }
 
     def start_requests(self):
-        profile_list = ['reidhoffman']
+        profile_list = ['klyment-yarosh']
         for profile in profile_list:
-            linkedin_people_url = f'https://www.linkedin.com/in/{profile}/' 
+            linkedin_people_url = f'https://www.linkedin.com/in/{profile}/'
             yield scrapy.Request(url=linkedin_people_url, callback=self.parse_profile, meta={'profile': profile, 'linkedin_url': linkedin_people_url})
 
     def parse_profile(self, response):
@@ -62,16 +63,16 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
             except Exception as e:
                 print('experience --> organisation_profile', e)
                 experience['organisation_profile'] = ''
-                
-                
+
+
             ## location
             try:
                 experience['location'] = block.css('p.experience-item__location::text').get().strip()
             except Exception as e:
                 print('experience --> location', e)
                 experience['location'] = ''
-                
-                
+
+
             ## description
             try:
                 experience['description'] = block.css('p.show-more-less-text__text--more::text').get().strip()
@@ -82,7 +83,7 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
                 except Exception as e:
                     print('experience --> description', e)
                     experience['description'] = ''
-                    
+
             ## time range
             try:
                 date_ranges = block.css('span.date-range time::text').getall()
@@ -99,10 +100,10 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
                 experience['start_time'] = ''
                 experience['end_time'] = ''
                 experience['duration'] = ''
-            
+
             item['experience'].append(experience)
 
-        
+
         """
             EDUCATION SECTION
         """
@@ -143,7 +144,7 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
                 print("education --> description", e)
                 education['description'] = ''
 
-         
+
             ## time range
             try:
                 date_ranges = block.css('span.date-range time::text').getall()
@@ -161,6 +162,29 @@ class LinkedInPeopleProfileSpider(scrapy.Spider):
             item['education'].append(education)
 
         yield item
-        
-    
 
+
+        """
+        BUILDING COVER LETTERS BASED ON THE DATA FROM LINKEDIN
+        """
+        desired_role = input("Enter the desired role: ")
+        company = input("Enter the company name: ")
+        extra = input("Enter any additional information you want to focus on in your cover-letter (optional): ")
+
+        client = OpenAI(api_key = 'OPENAI_API_KEY')
+
+        completion = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": """Using the JSON data provided, which includes professional profile details from Linkedin profile such as name, experience,
+             and education, craft a personalized cover letter for specified company applying for the specified position. Highlight relevant experiences and skills that
+             align with the job description, demonstrating why the candidate is the best fit for the role. Ensure the tone is professional and matches the company's culture."""},
+
+            {"role": "user", "content": f"Company name: {company}; Desired role: {desired_role}; Data from LinkedIn: {item};
+             Focus on: {extra} (if empty, skip this part)"},
+        ]
+        )
+
+        with open('cover_letters.txt', 'w') as file:
+            file.write(completion.choices[0].message.content)
+            file.write('\n\n\n')
