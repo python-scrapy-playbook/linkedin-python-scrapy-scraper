@@ -1,7 +1,7 @@
 # linkedin-python-scrapy-scraper
 Python Scrapy spiders that scrape job data & people and company profiles from [LinkedIn.com](https://www.linkedin.com/). 
 
-This Scrapy project contains 3 seperate spiders:
+This Scrapy project contains 3 separate spiders:
 
 | Spider  |      Description      |
 |----------|-------------|
@@ -21,15 +21,55 @@ This LinkedIn spider uses [ScrapeOps Proxy](https://scrapeops.io/proxy-aggregato
 
 You can [sign up for a free API key here](https://scrapeops.io/app/register/main).
 
-To use the ScrapeOps Proxy you need to first install the proxy middleware:
 
-```python
+> ⚠️ **Important:** You will need to first validate your email and sometimes your phone number before your API key will work in this project!
 
-pip install scrapeops-scrapy-proxy-sdk
+### ScrapeOps Proxy Cost
+The cost for one LinkedIn request is 30 credits. Our free plan offers 1000 credits so you would have only have enough to make 33 valid requests to linkedin using the free plan. Paid plans start at $9 per month for 25k credits (approx. 833 LinkedIn requests). 
 
+
+## Project installation
+Follow the following steps exactly to get your project set up & running.
+
+1. Clone this repo in your project folder (we presume you already have git installed!)
+```
+git clone https://github.com/python-scrapy-playbook/linkedin-python-scrapy-scraper
 ```
 
-Then activate the ScrapeOps Proxy by adding your API key to the `SCRAPEOPS_API_KEY` in the ``settings.py`` file.
+
+2. Set up a virtual environment. Go into the downloaded project and create a new virtual environment.
+```
+cd linkedin-python-scrapy-scraper
+python -m venv venv
+```
+
+3. Activate the virtual environment
+
+**Mac/Linux:**
+```bash
+source venv/bin/activate
+```
+
+**Windows (Command Prompt):**
+```cmd
+venv\Scripts\activate
+```
+
+**Windows (PowerShell):**
+```powershell
+venv\Scripts\Activate.ps1
+```
+
+4. Install scrapy & the scrapeops proxy middleware 
+```
+pip install scrapy scrapeops-scrapy
+
+pip install scrapeops-scrapy-proxy-sdk
+```
+
+5. Add your ScrapeOps API key. If you don't have one already you can [sign up for a free API key here](https://scrapeops.io/app/register/main).
+
+Add your API key to the `SCRAPEOPS_API_KEY` in the projects ``settings.py`` file.
 
 ```python
 
@@ -44,84 +84,21 @@ DOWNLOADER_MIDDLEWARES = {
 ```
 
 
-## ScrapeOps Monitoring
-To monitor our scraper, this spider uses the [ScrapeOps Monitor](https://scrapeops.io/monitoring-scheduling/), a free monitoring tool specifically designed for web scraping. 
-
-**Live demo here:** [ScrapeOps Demo](https://scrapeops.io/app/login/demo) 
-
-![ScrapeOps Dashboard](https://scrapeops.io/assets/images/scrapeops-promo-286a59166d9f41db1c195f619aa36a06.png)
-
-To use the ScrapeOps Proxy you need to first install the monitoring SDK:
-
+6. You should now be able to run the scraper you would like
 ```
-
-pip install scrapeops-scrapy
-
-```
-
-
-Then activate the ScrapeOps Proxy by adding your API key to the `SCRAPEOPS_API_KEY` in the ``settings.py`` file.
-
-```python
-
-SCRAPEOPS_API_KEY = 'YOUR_API_KEY'
-
-# Add In The ScrapeOps Monitoring Extension
-EXTENSIONS = {
-'scrapeops_scrapy.extension.ScrapeOpsMonitor': 500, 
-}
-
-
-DOWNLOADER_MIDDLEWARES = {
-
-    ## ScrapeOps Monitor
-    'scrapeops_scrapy.middleware.retry.RetryMiddleware': 550,
-    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
-    
-    ## Proxy Middleware
-    'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk': 725,
-}
-
-```
-
-If you are using both the ScrapeOps Proxy & Monitoring then you just need to enter the API key once.
-
-
-## Running The Scrapers
-Make sure Scrapy and the ScrapeOps Monitor is installed:
-
-```
-
-pip install scrapy scrapeops-scrapy
-
-```
-
-To run the LinkedIn spiders you should first set the search query parameters you want to search by updating the `profile_list` list in the spiders:
-
-```python
-
-def start_requests(self):
-    profile_list = ['reidhoffman']
-    for profile in profile_list:
-        linkedin_people_url = f'https://www.linkedin.com/in/{profile}/' 
-        yield scrapy.Request(url=linkedin_people_url, callback=self.parse_profile, meta={'profile': profile, 'linkedin_url': linkedin_people_url})
-
-
-```
-
-Then to run the spider, enter one of the following command:
-
-```
-
 scrapy crawl linkedin_people_profile
 
+scrapy crawl linkedin_company_profile
+
+scrapy crawl linkedin_jobs
 ```
+
 
 
 ## Customizing The LinkedIn People Profile Scraper
 The following are instructions on how to modify the LinkedIn People Profile scraper for your particular use case.
 
-Check out this [guide to building a LinkedIn.com Scrapy people profile spider](https://scrapeops.io/python-scrapy-playbook/python-scrapy-linkedin-people-scraper//) if you need any more information.
+Check out this [guide to building a LinkedIn.com Scrapy people profile spider](https://scrapeops.io/python-scrapy-playbook/python-scrapy-linkedin-people-scraper/) if you need any more information.
 
 ### Configuring LinkedIn People Profile Search
 To change the query parameters for the people profile search just change the profiles in the `profile_list` lists in the spider.
@@ -139,18 +116,16 @@ def start_requests(self):
 ```
 
 ### Extract More/Different Data
-LinkedIn People Profile pages contain a lot of useful data, however, in this spider is configured to only parse:
+LinkedIn People Profile pages contain a lot of useful data. This spider extracts:
 
-- Name
-- Description
-- Number of followers
-- Number of connections
-- Location
-- About
-- Experienes - organisation name, organisation profile link, position, start & end dates, description.
-- Education - organisation name, organisation profile link, course details, start & end dates, description.
+- **Profile Info**: name, description, location, followers, connections, about
+- **Experience**: title, company, organisation_profile, location, description, start_time, end_time, duration
+- **Education**: organisation, organisation_profile, course_details, description, start_time, end_time
+- **Volunteering**: role, organisation, organisation_profile, cause, description, start_time, end_time, duration
+- **Skills**: list of skill names
+- **Recommendations**: recommender_name, recommender_profile, content
 
-You can expand or change the data that gets extract by adding additional parsers and adding the data to the `item` that is yielded in the `parse_profiles` method:
+You can expand or change the data that gets extracted by adding additional parsers and adding the data to the `item` that is yielded in the `parse_profiles` method:
 
 
 ### Speeding Up The Crawl
@@ -166,17 +141,17 @@ CONCURRENT_REQUESTS = 10
 ```
 
 ### Storing Data
-The spiders are set to save the scraped data into a CSV file and store it in a data folder using [Scrapy's Feed Export functionality](https://docs.scrapy.org/en/latest/topics/feed-exports.html).
+The spiders are set to save the scraped data into a JSON file and store it in a data folder using [Scrapy's Feed Export functionality](https://docs.scrapy.org/en/latest/topics/feed-exports.html).
 
 ```python
 
 custom_settings = {
-        'FEEDS': { 'data/%(name)s_%(time)s.csv': { 'format': 'csv',}}
+        'FEEDS': { 'data/%(name)s_%(time)s.jsonl': { 'format': 'jsonlines',}}
         }
 
 ```
 
-If you would like to save your CSV files to a AWS S3 bucket then check out our [Saving CSV/JSON Files to Amazon AWS S3 Bucket guide here](https://scrapeops.io//python-scrapy-playbook/scrapy-save-aws-s3)
+If you would like to save your files to a AWS S3 bucket then check out our [Saving CSV/JSON Files to Amazon AWS S3 Bucket guide here](https://scrapeops.io//python-scrapy-playbook/scrapy-save-aws-s3)
 
 Or if you would like to save your data to another type of database then be sure to check out these guides:
 
